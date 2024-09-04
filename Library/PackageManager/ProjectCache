@@ -5,22 +5,22 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638582649978178998
-    m_Hash: 2201768637
+      ticks: 638610800018732322
+    m_Hash: 2695362803
   m_LockFileStatus:
     m_FilePath: C:/GameDev/Unity/TrinityRiverValley/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638582649978220642
-    m_Hash: 466026652
+      ticks: 638610800117127430
+    m_Hash: 1549265420
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
   m_LocalFileStatus: []
 m_ProjectPath: C:/GameDev/Unity/TrinityRiverValley/Packages
-m_EditorVersion: 2022.3.32f1 (c8300dc0a3fa)
+m_EditorVersion: 2022.3.45f1 (a13dfa44d684)
 m_ResolvedPackages:
 - packageId: com.kylewbanks.scenerefattribute@https://github.com/KyleBanks/scene-ref-attribute.git
   testable: 0
@@ -179,7 +179,6 @@ m_ResolvedPackages:
     - 3.1.0
     - 3.1.1
     compatible:
-    - 2.10.0
     - 2.10.1
     - 3.0.0-pre.3
     - 3.0.0-pre.4
@@ -247,7 +246,7 @@ m_ResolvedPackages:
     revision: 99f33a2a49de6506040887bf2cadade68d040e47
     path: 
   unityLifecycle:
-    version: 2.10.0
+    version: 2.10.1
     nextVersion: 
     recommendedVersion: 
     isDeprecated: 0
@@ -351,10 +350,8 @@ m_ResolvedPackages:
     - 2.4.3
     - 2.4.4
     compatible:
-    - 2.3.1
-    - 2.4.3
     - 2.4.4
-    recommended: 2.3.1
+    recommended: 2.4.4
     deprecated: []
   dependencies: []
   resolvedDependencies: []
@@ -392,7 +389,7 @@ m_ResolvedPackages:
     revision: 03b1de8d838eb1e427cb1b1d8bf9157f33377542
     path: 
   unityLifecycle:
-    version: 2.3.1
+    version: 2.4.4
     nextVersion: 
     recommendedVersion: 
     isDeprecated: 0
@@ -455,7 +452,7 @@ m_ResolvedPackages:
   - name: com.unity.modules.jsonserialize
     version: 1.0.0
   - name: com.unity.ide.rider
-    version: 3.0.28
+    version: 3.0.31
   - name: com.unity.ide.vscode
     version: 1.2.5
   - name: com.unity.editorcoroutines
@@ -463,7 +460,7 @@ m_ResolvedPackages:
   - name: com.unity.performance.profile-analyzer
     version: 1.2.2
   - name: com.unity.testtools.codecoverage
-    version: 1.2.5
+    version: 1.2.6
   - name: com.unity.settings-manager
     version: 2.0.1
   keywords: []
@@ -622,12 +619,12 @@ m_ResolvedPackages:
   isDeprecated: 0
   deprecationMessage: 
   fingerprint: 
-- packageId: com.unity.terrain-tools@5.0.4
+- packageId: com.unity.terrain-tools@5.0.5
   testable: 0
   isDirectDependency: 1
-  version: 5.0.4
+  version: 5.0.5
   source: 1
-  resolvedPath: C:\GameDev\Unity\TrinityRiverValley\Library\PackageCache\com.unity.terrain-tools@5.0.4
+  resolvedPath: C:\GameDev\Unity\TrinityRiverValley\Library\PackageCache\com.unity.terrain-tools@5.0.5
   assetPath: Packages/com.unity.terrain-tools
   name: com.unity.terrain-tools
   displayName: Terrain Tools
@@ -636,7 +633,7 @@ m_ResolvedPackages:
     email: 
     url: 
   category: 
-  type: assets
+  type: asset
   description: "The Terrain Tools package adds additional Terrain sculpting brushes
     and tools to Unity. This add-on toolset is suitable if you require more control
     over the appearance of your Terrain, and want to streamline Terrain workflows.
@@ -666,15 +663,14 @@ m_ResolvedPackages:
     - 5.0.2
     - 5.0.3
     - 5.0.4
+    - 5.0.5
     - 5.1.0-pre.1
     - 5.1.0
     - 5.1.1
+    - 5.1.2
     compatible:
-    - 5.0.1
-    - 5.0.2
-    - 5.0.3
-    - 5.0.4
-    recommended: 5.0.4
+    - 5.0.5
+    recommended: 5.0.5
     deprecated: []
   dependencies:
   - name: com.unity.modules.terrain
@@ -705,16 +701,16 @@ m_ResolvedPackages:
     configSource: 0
   hideInEditor: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 638346103880000000
+  datePublishedTicks: 638587933280000000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.terrain-tools@5.0/manual/index.html
   hasRepository: 1
   repository:
     type: git
     url: https://github.com/Unity-Technologies/TerrainTools.git
-    revision: 3d80e82822fd08d11061c97db2cc7237293af6b5
+    revision: 9fab3106d03eb211c6f5f8fcc5a136e34c9e958a
     path: 
   unityLifecycle:
-    version: 5.0.1
+    version: 5.0.5
     nextVersion: 
     recommendedVersion: 
     isDeprecated: 0
@@ -1038,18 +1034,18 @@ m_ResolvedPackages:
     recommended: 1.7.6
     deprecated: []
   dependencies:
+  - name: com.unity.modules.audio
+    version: 1.0.0
   - name: com.unity.modules.director
     version: 1.0.0
   - name: com.unity.modules.animation
     version: 1.0.0
-  - name: com.unity.modules.audio
-    version: 1.0.0
   - name: com.unity.modules.particlesystem
     version: 1.0.0
   resolvedDependencies:
-  - name: com.unity.modules.director
-    version: 1.0.0
   - name: com.unity.modules.audio
+    version: 1.0.0
+  - name: com.unity.modules.director
     version: 1.0.0
   - name: com.unity.modules.animation
     version: 1.0.0
@@ -3283,12 +3279,12 @@ m_ResolvedPackages:
   isDeprecated: 0
   deprecationMessage: 
   fingerprint: 
-- packageId: com.unity.ide.rider@3.0.28
+- packageId: com.unity.ide.rider@3.0.31
   testable: 0
   isDirectDependency: 0
-  version: 3.0.28
+  version: 3.0.31
   source: 1
-  resolvedPath: C:\GameDev\Unity\TrinityRiverValley\Library\PackageCache\com.unity.ide.rider@3.0.28
+  resolvedPath: C:\GameDev\Unity\TrinityRiverValley\Library\PackageCache\com.unity.ide.rider@3.0.31
   assetPath: Packages/com.unity.ide.rider
   name: com.unity.ide.rider
   displayName: JetBrains Rider Editor
@@ -3349,7 +3345,6 @@ m_ResolvedPackages:
     - 3.0.28
     - 3.0.31
     compatible:
-    - 3.0.28
     - 3.0.31
     recommended: 3.0.31
     deprecated: []
@@ -3370,16 +3365,16 @@ m_ResolvedPackages:
     configSource: 0
   hideInEditor: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 638447139880000000
+  datePublishedTicks: 638548308080000000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.ide.rider@3.0/manual/index.html
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/com.unity.ide.rider.git
-    revision: f4880c72477e9bbd7321c0dbda4428fa10d916df
+    revision: ccd778a2275ff09f1a83bc924cfb2fb4d5b63566
     path: 
   unityLifecycle:
-    version: 3.0.28
+    version: 3.0.31
     nextVersion: 
     recommendedVersion: 
     isDeprecated: 0
@@ -3734,12 +3729,12 @@ m_ResolvedPackages:
   isDeprecated: 0
   deprecationMessage: 
   fingerprint: 
-- packageId: com.unity.testtools.codecoverage@1.2.5
+- packageId: com.unity.testtools.codecoverage@1.2.6
   testable: 0
   isDirectDependency: 0
-  version: 1.2.5
+  version: 1.2.6
   source: 1
-  resolvedPath: C:\GameDev\Unity\TrinityRiverValley\Library\PackageCache\com.unity.testtools.codecoverage@1.2.5
+  resolvedPath: C:\GameDev\Unity\TrinityRiverValley\Library\PackageCache\com.unity.testtools.codecoverage@1.2.6
   assetPath: Packages/com.unity.testtools.codecoverage
   name: com.unity.testtools.codecoverage
   displayName: Code Coverage
@@ -3790,7 +3785,6 @@ m_ResolvedPackages:
     - 1.2.5
     - 1.2.6
     compatible:
-    - 1.2.5
     - 1.2.6
     recommended: 1.2.6
     deprecated: []
@@ -3825,16 +3819,16 @@ m_ResolvedPackages:
     configSource: 0
   hideInEditor: 1
   isAssetStorePackage: 0
-  datePublishedTicks: 638386640140000000
+  datePublishedTicks: 638575857900000000
   documentationUrl: https://docs.unity3d.com/Packages/com.unity.testtools.codecoverage@1.2/manual/index.html
   hasRepository: 1
   repository:
     type: git
     url: https://github.cds.internal.unity3d.com/unity/com.unity.testtools.codecoverage.git
-    revision: afeb9febf6597fcc31c99ca116d6a82b1e97b9f5
+    revision: 959db8ff97eedf9b211ad5cf320b87ac01f1e90f
     path: 
   unityLifecycle:
-    version: 1.2.5
+    version: 1.2.6
     nextVersion: 
     recommendedVersion: 
     isDeprecated: 0
@@ -3977,4 +3971,4 @@ m_ResolvedPackages:
   isDeprecated: 0
   deprecationMessage: 
   fingerprint: 
-m_BuiltInPackagesHash: 5ad3986823ff1dda12bea54c6901f036d3719e0e
+m_BuiltInPackagesHash: 4bf036992e66df8542a0e2a381a825a4a2452a54
