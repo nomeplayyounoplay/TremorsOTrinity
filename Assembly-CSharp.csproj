@@ -64,20 +64,64 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.45f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\DampedTracker.cs" />
+    <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\FlyAround.cs" />
     <Compile Include="Assets\Project\Scripts\StateMachine\States\LocomotionState.cs" />
     <Compile Include="Assets\Project\Scripts\StateMachine\States\BaseState.cs" />
     <Compile Include="Assets\Project\Scripts\StateMachine\Transitions\Transition.cs" />
     <Compile Include="Assets\Project\Scripts\StateMachine\Predicates\FuncPredicate.cs" />
+    <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\ReparentPlayerToSurface.cs" />
+    <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\SimpleBullet.cs" />
+    <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\PlayerOnSurface.cs" />
+    <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\AimCameraRig.cs" />
+    <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\LockPosZ.cs" />
+    <Compile Include="Assets\Samples\Cinemachine\3.1.0\Input System Samples\Split Screen Multiplayer\PlayerCounter.cs" />
+    <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\ThirdPersonFollowCameraSideSwapper.cs" />
+    <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\WrapAround.cs" />
     <Compile Include="Assets\Project\Scripts\StateMachine\StateMachine.cs" />
+    <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\SimplePlayerShoot.cs" />
     <Compile Include="Assets\Project\Scripts\StateMachine\States\PlayerTestState.cs" />
+    <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\Magnet.cs" />
+    <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\SimplePlayerAimController.cs" />
+    <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\AimTargetManager.cs" />
+    <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\SimpleCarController.cs" />
+    <Compile Include="Assets\Samples\Cinemachine\3.1.0\Input System Samples\Split Screen Multiplayer\PlayerInitializer.cs" />
+    <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\ShotQualityBasedOnSplineCartPosition.cs" />
     <Compile Include="Assets\Project\Scripts\StateMachine\Transitions\ITransition.cs" />
+    <Compile Include="Assets\Samples\Cinemachine\3.1.0\Input System Samples\Split Screen Multiplayer\CustomInputHandler.cs" />
     <Compile Include="Assets\Project\Scripts\PlayerInputActions.cs" />
+    <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\ReduceGroupWeightWhenBelowFloor.cs" />
+    <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\SimplePlayerAnimator.cs" />
+    <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\LookAtTarget.cs" />
+    <Compile Include="Assets\Samples\Cinemachine\3.1.0\Input System Samples\Split Screen Multiplayer\ConstantOrbitalRotation.cs" />
+    <Compile Include="Assets\Samples\Cinemachine\3.1.0\2D Samples\2D Platformer\GameControl.cs" />
+    <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\RunnerController.cs" />
+    <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\SimplePlayerController2D.cs" />
+    <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\TurnAroundPlayer.cs" />
+    <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\MixCamerasBasedOnSpeed.cs" />
+    <Compile Include="Assets\Samples\Cinemachine\3.1.0\2D Samples\2D Platformer\Platformer Camera 2D.cs" />
+    <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\RigidbodyInterpolationSetter.cs" />
+    <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\RandomizedDollySpeed.cs" />
     <Compile Include="Assets\Project\Scripts\StateMachine\States\IState.cs" />
+    <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\SpawnInRadius.cs" />
+    <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\ExpandingAimReticle.cs" />
+    <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\MagnetGroupController.cs" />
+    <Compile Include="Assets\Samples\Cinemachine\3.1.0\3D Samples\Custom Blends\BlendStyleManager.cs" />
     <Compile Include="Assets\Project\Scripts\PlayerObjectPickup.cs" />
+    <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\SimplePlayerController.cs" />
+    <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\CursorLockManager.cs" />
     <Compile Include="Assets\Project\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\SamplesHelpUI.cs" />
     <Compile Include="Assets\Project\Scripts\StateMachine\States\PlayerBaseState.cs" />
+    <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\SamplesDynamicUI.cs" />
     <Compile Include="Assets\Project\Scripts\StateMachine\Predicates\IPredicate.cs" />
     <Compile Include="Assets\Project\Scripts\InputReader.cs" />
+    <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\CinemachineFadeOutShaderController.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\UI\SampleHelpUI.uxml" />
+    <None Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\UI\SamplesUIStyle.uss" />
+    <None Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Shaders\FadeOut.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
@@ -916,10 +960,6 @@
       <HintPath>Library\ScriptAssemblies\Unity.TerrainTools.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="com.unity.cinemachine.editor">
-      <HintPath>Library\ScriptAssemblies\com.unity.cinemachine.editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.PlasticSCM.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.PlasticSCM.Editor.dll</HintPath>
       <Private>False</Private>
@@ -948,16 +988,20 @@
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Core.dll</HintPath>
       <Private>False</Private>
     </Reference>
-    <Reference Include="UnityEngine.UI">
-      <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
     <Reference Include="Unity.VisualScripting.Core.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Core.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.Cinemachine">
+      <HintPath>Library\ScriptAssemblies\Unity.Cinemachine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.Rider.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.Rider.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.UI">
+      <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.Flow">
@@ -966,6 +1010,10 @@
     </Reference>
     <Reference Include="Unity.VisualScripting.Flow.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.Flow.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Mathematics.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.Timeline">
@@ -982,6 +1030,10 @@
     </Reference>
     <Reference Include="Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection">
       <HintPath>Library\ScriptAssemblies\Unity.TestTools.CodeCoverage.Editor.OpenCover.Mono.Reflection.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Splines.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Splines.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VisualScripting.SettingsProvider.Editor">
@@ -1008,6 +1060,14 @@
       <HintPath>Library\ScriptAssemblies\KBCore.Refs.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.Mathematics">
+      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Unity.Splines">
+      <HintPath>Library\ScriptAssemblies\Unity.Splines.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
       <Private>False</Private>
@@ -1016,16 +1076,16 @@
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.Editor.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Unity.Cinemachine.Editor">
+      <HintPath>Library\ScriptAssemblies\Unity.Cinemachine.Editor.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="Unity.VisualScripting.State">
       <HintPath>Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
-      <Private>False</Private>
-    </Reference>
-    <Reference Include="Cinemachine">
-      <HintPath>Library\ScriptAssemblies\Cinemachine.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>

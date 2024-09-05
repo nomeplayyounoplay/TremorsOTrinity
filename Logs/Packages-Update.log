@@ -41,7 +41,11 @@ The following packages were updated:
   com.unity.timeline from version 1.6.2 to 1.7.6
   com.unity.visualscripting from version 1.7.6 to 1.9.4
 
+<<<<<<< HEAD
 === Wed Sep  4 13:53:21 2024
+=======
+=== Wed Sep  4 13:49:28 2024
+>>>>>>> NewCamera
 
 Packages were changed.
 Update Mode: updateDependencies

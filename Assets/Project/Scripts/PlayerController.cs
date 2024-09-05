@@ -1,5 +1,5 @@
 using System;
-using Cinemachine;
+using Unity.Cinemachine;
 using KBCore.Refs;
 using UnityEngine;
 
@@ -12,7 +12,7 @@ namespace RetroHorror
         [Header("References")]
         [SerializeField, Self] Animator animator;
         [SerializeField, Self] Rigidbody rb;
-        [SerializeField, Anywhere] CinemachineFreeLook freeLookVCam;
+        [SerializeField, Anywhere] CinemachineCamera freelookCam;
         [SerializeField, Anywhere] InputReader input;
         [SerializeField] LayerMask pickupLayerMask;
 
@@ -59,10 +59,10 @@ namespace RetroHorror
 
             //Essentially if the Player teleports/moves away in a flash
             //Makes sure camera does not lose the player 
-            freeLookVCam.OnTargetObjectWarped
+            freelookCam.OnTargetObjectWarped
             (
                 transform,
-                transform.position - freeLookVCam.transform.position - Vector3.forward
+                transform.position - freelookCam.transform.position - Vector3.forward
             );
 
             //
