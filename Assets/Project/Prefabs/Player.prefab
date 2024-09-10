@@ -363,11 +363,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 4892497093194585820}
   rb: {fileID: 8796313898524768522}
-  freeLookVCam: {fileID: 0}
+  freelookCam: {fileID: 0}
   input: {fileID: 11400000, guid: fd2ddf85537a36b49a0bbee3e43aabc5, type: 2}
+  pickupLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
   moveSpeed: 200
   rotationSpeed: 200
   animatorSmoothTime: 0.2
+  interactionDistance: 15
+  isTesting: 0
 --- !u!136 &3383759936910054022
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -2,6 +2,7 @@ using System;
 using Unity.Cinemachine;
 using KBCore.Refs;
 using UnityEngine;
+using UnityEditor.Experimental.GraphView;
 
 namespace RetroHorror
 {
@@ -12,6 +13,7 @@ namespace RetroHorror
         [Header("References")]
         [SerializeField, Self] Animator animator;
         [SerializeField, Self] Rigidbody rb;
+        [SerializeField, Self] CapsuleCollider capsuleCollider;
         [SerializeField, Anywhere] CinemachineCamera freelookCam;
         [SerializeField, Anywhere] InputReader input;
         [SerializeField] LayerMask pickupLayerMask;
@@ -20,12 +22,11 @@ namespace RetroHorror
         [SerializeField] float moveSpeed = 6f;
         [SerializeField] float rotationSpeed = 15f;
         [SerializeField] float animatorSmoothTime = 0.2f;
-        [SerializeField] float interactionDistance = 15f;
+        [SerializeField] float playerReach = 0.5f;
+
 
         StateMachine stateMachine;
         Transform mainCam;
-
-        //ObjectInteraction objectPickup;
 
         //Player Movement Variables
         Vector3 playerMovement;
@@ -36,8 +37,6 @@ namespace RetroHorror
         float currentSpeed = 0.0f;
 
         public bool isTesting = false;
-
-        private GameObject currentInteractable;
 
         void OnEnable()
         {
@@ -145,7 +144,7 @@ namespace RetroHorror
 
         float SmoothSpeed(float value) => Mathf.SmoothDamp(currentSpeed, value, ref velocity, animatorSmoothTime);
 
-        //Tester - When pressed will change states and remain in state until release
+        //Tester - When pressed&held will change states and remain in state until release
         //Use this style for Sneaking
         bool IsTesting()
         {
@@ -163,35 +162,23 @@ namespace RetroHorror
 
         void AttemptInteraction()
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if(Physics.Raycast(ray, out RaycastHit hitInfo, interactionDistance, pickupLayerMask))
-            {
-                currentInteractable = hitInfo.collider.gameObject;
-                Interact(currentInteractable);
-            }
-            else
-            {
-                Debug.Log("Object to far");
-            }
-        }
+            //Raycast from from Center of Camera in the direction of the mouse position
+            Ray camRay = Camera.main.ScreenPointToRay(Input.mousePosition);
+            //Debug.DrawRay(camRay.origin, camRay.direction * 5, Color.red, 20.0f);
 
-        void Interact(GameObject clickedObject)
-        {
-            if(!clickedObject) return;
-
-            switch(currentInteractable.tag)
+            if(Physics.Raycast(camRay, out RaycastHit hitInfo, 200, pickupLayerMask))
             {
-                case "Item":
-                    Debug.Log("ITEM ITEM OOOOOO");
-                    //objectPickup.PickupObject(currentInteractable);
-                    break;
-                case "NPC":
-                    break;
-                case "Door":
-                    break;
-                default:
-                    Debug.Log("Not interaction defined for this tag");
-                    break;
+                float playerHeight = capsuleCollider.height;
+                float playerRadius = capsuleCollider.radius;
+                Vector3 directionToObject = hitInfo.point - transform.position;
+                if(Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, directionToObject, playerReach))
+                {
+                    Debug.Log("ASSS");
+                }
+                else
+                {
+                    Debug.Log("Object to far");
+                }           
             }
         }
     }

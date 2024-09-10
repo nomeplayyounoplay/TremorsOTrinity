@@ -72,6 +72,7 @@
     <Compile Include="Assets\Project\Scripts\StateMachine\Predicates\FuncPredicate.cs" />
     <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\ReparentPlayerToSurface.cs" />
     <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\SimpleBullet.cs" />
+    <Compile Include="Assets\Project\Scripts\Interactables\Object.cs" />
     <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\PlayerOnSurface.cs" />
     <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\AimCameraRig.cs" />
     <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\LockPosZ.cs" />
@@ -101,7 +102,9 @@
     <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\MixCamerasBasedOnSpeed.cs" />
     <Compile Include="Assets\Samples\Cinemachine\3.1.0\2D Samples\2D Platformer\Platformer Camera 2D.cs" />
     <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\RigidbodyInterpolationSetter.cs" />
+    <Compile Include="Assets\Project\Scripts\Interactables\NPC.cs" />
     <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\RandomizedDollySpeed.cs" />
+    <Compile Include="Assets\Project\Scripts\Interactables\Interactable.cs" />
     <Compile Include="Assets\Project\Scripts\StateMachine\States\IState.cs" />
     <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\SpawnInRadius.cs" />
     <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\ExpandingAimReticle.cs" />

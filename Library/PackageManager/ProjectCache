@@ -5,26 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-<<<<<<< HEAD
-      ticks: 638610800018732322
-    m_Hash: 2695362803
-=======
-      ticks: 638610816941037571
-    m_Hash: 760822279
->>>>>>> NewCamera
+      ticks: 638610954331899656
+    m_Hash: 2215171277
   m_LockFileStatus:
     m_FilePath: C:/GameDev/Unity/TrinityRiverValley/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-<<<<<<< HEAD
-      ticks: 638610800117127430
-    m_Hash: 1549265420
-=======
-      ticks: 638610816941169327
-    m_Hash: 4062649636
->>>>>>> NewCamera
+      ticks: 638610954331899656
+    m_Hash: 4189130974
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -3842,8 +3832,6 @@ m_ResolvedPackages:
     path: 
   unityLifecycle:
     version: 1.2.6
-<<<<<<< HEAD
-=======
     nextVersion: 
     recommendedVersion: 
     isDeprecated: 0
@@ -3937,7 +3925,6 @@ m_ResolvedPackages:
     path: 
   unityLifecycle:
     version: 2.6.1
->>>>>>> NewCamera
     nextVersion: 
     recommendedVersion: 
     isDeprecated: 0
@@ -4080,8 +4067,6 @@ m_ResolvedPackages:
   isDeprecated: 0
   deprecationMessage: 
   fingerprint: 
-<<<<<<< HEAD
-=======
 - packageId: com.unity.mathematics@1.2.6
   testable: 0
   isDirectDependency: 0
@@ -4159,5 +4144,4 @@ m_ResolvedPackages:
   isDeprecated: 0
   deprecationMessage: 
   fingerprint: 
->>>>>>> NewCamera
 m_BuiltInPackagesHash: 4bf036992e66df8542a0e2a381a825a4a2452a54
