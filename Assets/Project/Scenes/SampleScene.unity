@@ -1086,7 +1086,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3383759936910054022, guid: 68fd88e88f8282845ba7af21603fbbcc, type: 3}
       propertyPath: m_Radius
-      value: 0.16
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 4892497093194585820, guid: 68fd88e88f8282845ba7af21603fbbcc, type: 3}
       propertyPath: m_ApplyRootMotion

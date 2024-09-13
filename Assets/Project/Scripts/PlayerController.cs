@@ -28,6 +28,9 @@ namespace RetroHorror
         StateMachine stateMachine;
         Transform mainCam;
 
+        float playerHeight;
+        float playerRadius;
+
         //Player Movement Variables
         Vector3 playerMovement;
         float velocity;
@@ -56,6 +59,9 @@ namespace RetroHorror
         {
             mainCam = Camera.main.transform;
 
+            playerHeight = capsuleCollider.height;
+            playerRadius = capsuleCollider.radius;
+
             //Essentially if the Player teleports/moves away in a flash
             //Makes sure camera does not lose the player 
             freelookCam.OnTargetObjectWarped
@@ -63,9 +69,6 @@ namespace RetroHorror
                 transform,
                 transform.position - freelookCam.transform.position - Vector3.forward
             );
-
-            //
-           // objectPickup = new ObjectInteraction();
 
             //StateMachine
             stateMachine = new StateMachine();
@@ -164,16 +167,13 @@ namespace RetroHorror
         {
             //Raycast from from Center of Camera in the direction of the mouse position
             Ray camRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-            //Debug.DrawRay(camRay.origin, camRay.direction * 5, Color.red, 20.0f);
 
             if(Physics.Raycast(camRay, out RaycastHit hitInfo, 200, pickupLayerMask))
             {
-                float playerHeight = capsuleCollider.height;
-                float playerRadius = capsuleCollider.radius;
                 Vector3 directionToObject = hitInfo.point - transform.position;
                 if(Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, directionToObject, playerReach))
                 {
-                    Debug.Log("ASSS");
+                    hitInfo.transform.GetComponent<Interactable>().Interact();
                 }
                 else
                 {
