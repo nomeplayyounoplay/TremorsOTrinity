@@ -381,6 +381,7 @@
 "Assets/Project/Scripts/StateMachine/States/PlayerTestState.cs"
 "Assets/Project/Scripts/StateMachine/Transitions/ITransition.cs"
 "Assets/Project/Scripts/StateMachine/Transitions/Transition.cs"
+"Assets/Project/Scripts/WorldItem.cs"
 "Assets/Samples/Cinemachine/3.1.0/2D Samples/2D Platformer/GameControl.cs"
 "Assets/Samples/Cinemachine/3.1.0/2D Samples/2D Platformer/Platformer Camera 2D.cs"
 "Assets/Samples/Cinemachine/3.1.0/3D Samples/Custom Blends/BlendStyleManager.cs"

@@ -111,6 +111,7 @@
     <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\MagnetGroupController.cs" />
     <Compile Include="Assets\Samples\Cinemachine\3.1.0\3D Samples\Custom Blends\BlendStyleManager.cs" />
     <Compile Include="Assets\Project\Scripts\PlayerObjectPickup.cs" />
+    <Compile Include="Assets\Project\Scripts\WorldItem.cs" />
     <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\SimplePlayerController.cs" />
     <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\CursorLockManager.cs" />
     <Compile Include="Assets\Project\Scripts\PlayerController.cs" />
