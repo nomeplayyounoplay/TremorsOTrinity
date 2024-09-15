@@ -716,7 +716,7 @@ MonoBehaviour:
       Owner: {fileID: 1985392177}
       Enabled: 1
       Input:
-        InputAction: {fileID: -5630151704836100654, guid: 1d6e640e716dc4ff6989b73d02023f2b, type: 3}
+        InputAction: {fileID: -5064862681717505509, guid: b3d3cf5cf69f6ea4ebe5e93472e057ae, type: 3}
         Gain: 1
         LegacyInput: Mouse X
         LegacyGain: 200
@@ -765,33 +765,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a076c17fe76165e4f8ed21498b877bf9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Modifiers:
-  - rid: 2364553974847635456
+  Modifiers: []
   references:
     version: 2
-    RefIds:
-    - rid: 2364553974847635456
-      type: {class: CinemachineFreeLookModifier/CompositionModifier, ns: Unity.Cinemachine, asm: Unity.Cinemachine}
-      data:
-        Composition:
-          Top:
-            ScreenPosition: {x: 0, y: -0.01461035}
-            DeadZone:
-              Enabled: 1
-              Size: {x: 0.2, y: 0.2}
-            HardLimits:
-              Enabled: 0
-              Size: {x: 0.8, y: 0.8}
-              Offset: {x: 0, y: 0}
-          Bottom:
-            ScreenPosition: {x: 0, y: -0.01461035}
-            DeadZone:
-              Enabled: 1
-              Size: {x: 0.2, y: 0.2}
-            HardLimits:
-              Enabled: 0
-              Size: {x: 0.8, y: 0.8}
-              Offset: {x: 0, y: 0}
+    RefIds: []
 --- !u!114 &1985392176
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -813,7 +790,7 @@ MonoBehaviour:
       Enabled: 0
       Size: {x: 0.8, y: 0.8}
       Offset: {x: 0, y: 0}
-  CenterOnActivate: 1
+  CenterOnActivate: 0
   TargetOffset: {x: 0, y: 0, z: 0}
   Damping: {x: 0.5, y: 0.5}
   Lookahead:
@@ -892,7 +869,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1985392172}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.12345364, y: 0.000000023956353, z: -0.0000000035893484, w: 0.99235034}
+  m_LocalRotation: {x: 0.123453625, y: 0.000000046520523, z: -0.000000005787398, w: 0.99235034}
   m_LocalPosition: {x: -0.13490969, y: 1.9650594, z: -1.6192696}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
