@@ -305,7 +305,7 @@ GameObject:
   - component: {fileID: 8796313898524768522}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -363,15 +363,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 4892497093194585820}
   rb: {fileID: 8796313898524768522}
+  capsuleCollider: {fileID: 3383759936910054022}
   freelookCam: {fileID: 0}
   input: {fileID: 11400000, guid: fd2ddf85537a36b49a0bbee3e43aabc5, type: 2}
   pickupLayerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   moveSpeed: 200
-  rotationSpeed: 200
+  rotationSpeed: 500
   animatorSmoothTime: 0.2
-  interactionDistance: 15
+  playerReach: 0.5
   isTesting: 0
 --- !u!136 &3383759936910054022
 CapsuleCollider:
@@ -392,7 +393,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.2
   m_Height: 1.78
   m_Direction: 1
   m_Center: {x: 0, y: 0.87, z: 0}
@@ -421,7 +422,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &1938245278223395431
 GameObject:

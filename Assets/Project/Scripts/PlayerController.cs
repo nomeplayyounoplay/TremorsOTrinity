@@ -168,10 +168,23 @@ namespace RetroHorror
 
             if(Physics.Raycast(camRay, out RaycastHit hitInfo, 200, pickupLayerMask))
             {
-                Vector3 directionToObject = hitInfo.point - transform.position;
-                if(Physics.CapsuleCast(transform.position, transform.position + Vector3.up * playerHeight, playerRadius, directionToObject, playerReach))
+                Collider objectCollider = hitInfo.collider;
+                Vector3 closestCollisionPoint = objectCollider.ClosestPoint(transform.position);
+                Vector3 directionToObject = (closestCollisionPoint - transform.position).normalized;
+                
+                if(Physics.CapsuleCast
+                    (
+                        transform.position,                             //bottom of capsule
+                        transform.position + Vector3.up * playerHeight, //top of capsule
+                        playerRadius, 
+                        directionToObject, 
+                        out RaycastHit capsuleHit,
+                        playerReach
+                    )
+                )
                 {
-                    hitInfo.transform.GetComponent<Interactable>().Interact();
+                    if(capsuleHit.collider == hitInfo.collider)
+                        hitInfo.transform.GetComponent<Interactable>().Interact();
                 }
                 else
                 {

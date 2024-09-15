@@ -336,8 +336,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.064017214, y: -0.00000001977156, z: 0.0000000012683219, w: 0.9979488}
-  m_LocalPosition: {x: -0.13490969, y: 1.4629859, z: -1.8909259}
+  m_LocalRotation: {x: 0.1326872, y: 0.000000018106553, z: -0.00000000242394, w: 0.991158}
+  m_LocalPosition: {x: -0.13490969, y: 1.9650594, z: -1.6192696}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -613,7 +613,7 @@ Transform:
   m_GameObject: {fileID: 1366359330}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.92, y: 1.76, z: 2.1417143}
+  m_LocalPosition: {x: 5.92, y: 1.76, z: 2.18}
   m_LocalScale: {x: 0.39617044, y: 3.6239522, z: 13.2328615}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -832,22 +832,22 @@ MonoBehaviour:
     SplineCurvature: 0
   RecenteringTarget: 2
   HorizontalAxis:
-    Value: 0
-    Center: 0
+    Value: -0
+    Center: -0
     Range: {x: -180, y: 180}
     Wrap: 1
     Recentering:
-      Enabled: 0
+      Enabled: 1
       Wait: 1
       Time: 2
     Restrictions: 0
   VerticalAxis:
-    Value: 17.5
-    Center: 17.5
+    Value: 25
+    Center: 25
     Range: {x: -10, y: 45}
     Wrap: 0
     Recentering:
-      Enabled: 0
+      Enabled: 1
       Wait: 1
       Time: 2
     Restrictions: 0
@@ -869,8 +869,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1985392172}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.064017214, y: -0.000000019771559, z: 0.0000000012683217, w: 0.9979488}
-  m_LocalPosition: {x: -0.13490969, y: 1.4629859, z: -1.8909259}
+  m_LocalRotation: {x: 0.13268717, y: 0.000000018051425, z: -0.0000000020121662, w: 0.991158}
+  m_LocalPosition: {x: -0.13490969, y: 1.9650594, z: -1.6192696}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1080,52 +1080,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 1925864497149594466, guid: 68fd88e88f8282845ba7af21603fbbcc, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 3383759936910054022, guid: 68fd88e88f8282845ba7af21603fbbcc, type: 3}
-      propertyPath: m_Radius
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4892497093194585820, guid: 68fd88e88f8282845ba7af21603fbbcc, type: 3}
-      propertyPath: m_ApplyRootMotion
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8115533525056954135, guid: 68fd88e88f8282845ba7af21603fbbcc, type: 3}
-      propertyPath: animator
-      value: 
-      objectReference: {fileID: 8107290239260035376}
     - target: {fileID: 8115533525056954135, guid: 68fd88e88f8282845ba7af21603fbbcc, type: 3}
       propertyPath: freelookCam
       value: 
       objectReference: {fileID: 1985392173}
-    - target: {fileID: 8115533525056954135, guid: 68fd88e88f8282845ba7af21603fbbcc, type: 3}
-      propertyPath: freeLookVCam
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8115533525056954135, guid: 68fd88e88f8282845ba7af21603fbbcc, type: 3}
-      propertyPath: interactionDistance
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8115533525056954135, guid: 68fd88e88f8282845ba7af21603fbbcc, type: 3}
-      propertyPath: pickupLayerMask.m_Bits
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 8796313898524768522, guid: 68fd88e88f8282845ba7af21603fbbcc, type: 3}
-      propertyPath: m_Constraints
-      value: 112
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68fd88e88f8282845ba7af21603fbbcc, type: 3}
---- !u!95 &8107290239260035376 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 4892497093194585820, guid: 68fd88e88f8282845ba7af21603fbbcc, type: 3}
-  m_PrefabInstance: {fileID: 6807021755294473129}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
