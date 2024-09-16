@@ -106,8 +106,8 @@ namespace RetroHorror
             Vector3 movementDirection = CalculateMovementDirection();
             if(movementDirection.magnitude > ZEROF)
             {
-                HandleHorizontalMovement(movementDirection);
                 HandleRotation(movementDirection);
+                HandleHorizontalMovement(movementDirection);
                 currentSpeed = SmoothSpeed(movementDirection.magnitude);
             }
             else
