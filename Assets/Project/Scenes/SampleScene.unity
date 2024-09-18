@@ -336,8 +336,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.10886703, y: -0.000000014217163, z: 0.0000000015570348, w: 0.99405634}
-  m_LocalPosition: {x: -0.13490969, y: 1.9650594, z: -1.6192696}
+  m_LocalRotation: {x: 0.17364548, y: 0.00000015901097, z: -0.000000028037473, w: 0.98480827}
+  m_LocalPosition: {x: -0.13490969, y: 2.4377694, z: -1.447712}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -708,7 +708,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScanRecursively: 1
-  SuppressInputWhileBlending: 1
+  SuppressInputWhileBlending: 0
   IgnoreTimeScale: 0
   m_ControllerManager:
     Controllers:
@@ -716,7 +716,7 @@ MonoBehaviour:
       Owner: {fileID: 1985392177}
       Enabled: 1
       Input:
-        InputAction: {fileID: -5064862681717505509, guid: b3d3cf5cf69f6ea4ebe5e93472e057ae, type: 3}
+        InputAction: {fileID: 0}
         Gain: 1
         LegacyInput: Mouse X
         LegacyGain: 600
@@ -729,7 +729,7 @@ MonoBehaviour:
       Owner: {fileID: 1985392177}
       Enabled: 1
       Input:
-        InputAction: {fileID: -5630151704836100654, guid: 1d6e640e716dc4ff6989b73d02023f2b, type: 3}
+        InputAction: {fileID: 0}
         Gain: -1
         LegacyInput: Mouse Y
         LegacyGain: -175
@@ -821,11 +821,11 @@ MonoBehaviour:
   Radius: 10
   Orbits:
     Top:
-      Radius: 2
+      Radius: 1.2
       Height: 2
     Center:
       Radius: 4
-      Height: 0.46
+      Height: 1
     Bottom:
       Radius: 2.249728
       Height: -1.452664
@@ -869,8 +869,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1985392172}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.10886702, y: -0.00000007529251, z: 0.00000001108914, w: 0.99405634}
-  m_LocalPosition: {x: -0.13490969, y: 1.9650594, z: -1.6192696}
+  m_LocalRotation: {x: 0.17364547, y: 0.00000015681876, z: -0.000000015604687, w: 0.98480827}
+  m_LocalPosition: {x: -0.13490969, y: 2.4377694, z: -1.447712}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

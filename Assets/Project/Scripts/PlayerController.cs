@@ -119,13 +119,13 @@ namespace RetroHorror
 
         Vector3 CalculateMovementDirection()
         {
-            Vector3 camForward = mainCam.forward;
+            Vector3 camForward = (mainCam.forward).normalized;
             camForward.y = 0f;
-            Vector3 camRight = mainCam.right;
+            Vector3 camRight = (mainCam.right).normalized;
             camRight.y = 0f; 
             
-            Vector3 movementDirection = playerMovement.z * camForward.normalized + 
-                    playerMovement.x * camRight.normalized;
+            Vector3 movementDirection = playerMovement.z * camForward + 
+                    playerMovement.x * camRight;
             movementDirection.Normalize();
 
             return movementDirection;
