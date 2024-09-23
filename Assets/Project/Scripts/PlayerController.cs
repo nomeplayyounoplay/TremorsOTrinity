@@ -163,34 +163,30 @@ namespace RetroHorror
 
         void AttemptInteraction()
         {
-            //Raycast from from Center of Camera in the direction of the mouse position
-            Ray camRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-            if(Physics.Raycast(camRay, out RaycastHit hitInfo, 200, pickupLayerMask))
-            {
-                Collider objectCollider = hitInfo.collider;
-                Vector3 closestCollisionPoint = objectCollider.ClosestPoint(transform.position);
-                Vector3 directionToObject = (closestCollisionPoint - transform.position).normalized;
-                
-                if(Physics.CapsuleCast
-                    (
-                        transform.position,                             //bottom of capsule
-                        transform.position + Vector3.up * playerHeight, //top of capsule
-                        playerRadius, 
-                        directionToObject, 
-                        out RaycastHit capsuleHit,
-                        playerReach
-                    )
+            //When interact capsulecast from the player forward in the direction theyre facing
+            //if hit interactable do da interact dawg
+            if(Physics.CapsuleCast
+                (
+                    transform.position,                             //bottom of capsule
+                    transform.position + Vector3.up * playerHeight, //top of capsule
+                    playerRadius, 
+                    transform.forward, 
+                    out RaycastHit capsuleHit,
+                    playerReach,
+                    pickupLayerMask
                 )
+            )
+            {
+                Interactable hitInfo = capsuleHit.transform.GetComponent<Interactable>();
+                if(hitInfo != null)
                 {
-                    if(capsuleHit.collider == hitInfo.collider)
-                        hitInfo.transform.GetComponent<Interactable>().Interact();
+                    hitInfo.Interact();
                 }
-                else
-                {
-                    Debug.Log("Object to far");
-                }           
             }
+            else
+            {
+                Debug.Log("Nothing to interact with");
+            } 
         }
     }
 }
