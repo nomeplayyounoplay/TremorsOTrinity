@@ -31,7 +31,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""name"": ""Move"",
                     ""type"": ""Value"",
                     ""id"": ""18bfa640-241a-4725-a68e-15a1b5374914"",
-                    ""expectedControlType"": ""Vector2"",
+                    ""expectedControlType"": ""Integer"",
                     ""processors"": """",
                     ""interactions"": ""Press"",
                     ""initialStateCheck"": true
@@ -49,6 +49,24 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""name"": ""Interact"",
                     ""type"": ""Button"",
                     ""id"": ""33c8024f-0a4d-44fd-826b-d2c3701a7209"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChangeSpeed"",
+                    ""type"": ""Value"",
+                    ""id"": ""01078204-0090-428d-bb27-779dcab7b4c3"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""StartSpeedChange"",
+                    ""type"": ""Button"",
+                    ""id"": ""3b7f8d44-bf47-433f-aca1-06573f7647ee"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -187,6 +205,28 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3a5eb7da-3650-4419-bbd9-bfad6400b04c"",
+                    ""path"": ""<Mouse>/scroll"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse & Keys"",
+                    ""action"": ""ChangeSpeed"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4cca42ab-39b3-4fd7-87e1-879f0173736a"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse & Keys"",
+                    ""action"": ""StartSpeedChange"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -226,6 +266,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_TestKey = m_Player.FindAction("TestKey", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+        m_Player_ChangeSpeed = m_Player.FindAction("ChangeSpeed", throwIfNotFound: true);
+        m_Player_StartSpeedChange = m_Player.FindAction("StartSpeedChange", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -290,6 +332,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_TestKey;
     private readonly InputAction m_Player_Interact;
+    private readonly InputAction m_Player_ChangeSpeed;
+    private readonly InputAction m_Player_StartSpeedChange;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -297,6 +341,8 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @TestKey => m_Wrapper.m_Player_TestKey;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
+        public InputAction @ChangeSpeed => m_Wrapper.m_Player_ChangeSpeed;
+        public InputAction @StartSpeedChange => m_Wrapper.m_Player_StartSpeedChange;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -315,6 +361,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Interact.started += instance.OnInteract;
             @Interact.performed += instance.OnInteract;
             @Interact.canceled += instance.OnInteract;
+            @ChangeSpeed.started += instance.OnChangeSpeed;
+            @ChangeSpeed.performed += instance.OnChangeSpeed;
+            @ChangeSpeed.canceled += instance.OnChangeSpeed;
+            @StartSpeedChange.started += instance.OnStartSpeedChange;
+            @StartSpeedChange.performed += instance.OnStartSpeedChange;
+            @StartSpeedChange.canceled += instance.OnStartSpeedChange;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -328,6 +380,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Interact.started -= instance.OnInteract;
             @Interact.performed -= instance.OnInteract;
             @Interact.canceled -= instance.OnInteract;
+            @ChangeSpeed.started -= instance.OnChangeSpeed;
+            @ChangeSpeed.performed -= instance.OnChangeSpeed;
+            @ChangeSpeed.canceled -= instance.OnChangeSpeed;
+            @StartSpeedChange.started -= instance.OnStartSpeedChange;
+            @StartSpeedChange.performed -= instance.OnStartSpeedChange;
+            @StartSpeedChange.canceled -= instance.OnStartSpeedChange;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -368,5 +426,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnTestKey(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnChangeSpeed(InputAction.CallbackContext context);
+        void OnStartSpeedChange(InputAction.CallbackContext context);
     }
 }

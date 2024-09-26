@@ -1,6 +1,7 @@
 using Unity.Cinemachine;
 using KBCore.Refs;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace RetroHorror
 {
@@ -39,26 +40,35 @@ namespace RetroHorror
 
         public bool isTesting = false;
 
+        bool isShiftHeld = false;
+
         void OnEnable()
         {
             input.TestKeyPressed += OnTestKeyPressed;
             input.TestKeyReleased += OnTestKeyReleased;
 
+            input.ShiftPressed += OnShiftPressed;
+            input.ShiftReleased += OnShiftReleased;
+
             input.Interact += AttemptInteraction;
+
         }
         void OnDisable() 
         {
-            input.TestKeyPressed -= OnTestKeyPressed;
+            input.TestKeyPressed -= OnShiftPressed;
             input.TestKeyReleased -= OnTestKeyReleased;
+
+            input.ShiftPressed -= OnShiftPressed;
+            input.ShiftReleased -= OnShiftReleased;
 
             input.Interact -= AttemptInteraction;
         }
         void Awake()
         {
-            mainCam = Camera.main.transform;
-
             playerHeight = capsuleCollider.height;
             playerRadius = capsuleCollider.radius;
+
+            mainCam = Camera.main.transform;
 
             //Essentially if the Player teleports/moves away in a flash
             //Makes sure camera does not lose the player 
@@ -91,6 +101,7 @@ namespace RetroHorror
         {
             playerMovement = new Vector3(input.Direction.x, 0f, input.Direction.y);
             stateMachine.Update();
+            AdjustMovementSpeed();
             UpdateAnimator();
         }
 
@@ -147,18 +158,11 @@ namespace RetroHorror
 
         //Tester - When pressed&held will change states and remain in state until release
         //Use this style for Sneaking
+        void OnTestKeyPressed() => isTesting = true;
+        void OnTestKeyReleased() => isTesting = false;
         bool IsTesting()
         {
             return isTesting;
-        }
-        void OnTestKeyPressed()
-        {
-            isTesting = true;
-            Debug.Log("GO TO TEST!!!");
-        }
-        void OnTestKeyReleased()
-        {
-            isTesting = false;
         }
 
         void AttemptInteraction()
@@ -188,5 +192,21 @@ namespace RetroHorror
                 Debug.Log("Nothing to interact with");
             } 
         }
+
+        void AdjustMovementSpeed()
+        {
+            if(!IsShiftHeld()) return;
+
+            float scrollSpeed = input.GetScrollValue;
+            print(scrollSpeed);
+        }
+        
+        void OnShiftPressed() => isShiftHeld = true;
+        void OnShiftReleased() => isShiftHeld = false;
+        bool IsShiftHeld()
+        {
+            return isShiftHeld;
+        }
+
     }
 }

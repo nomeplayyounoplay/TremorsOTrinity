@@ -265,7 +265,7 @@ GameObject:
   - component: {fileID: 855692200}
   - component: {fileID: 855692199}
   m_Layer: 3
-  m_Name: Cube (1)
+  m_Name: wall_medium_floating
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -482,7 +482,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14863053, y: 0.0018914614, z: -0.00028428706, w: 0.988891}
+  m_LocalRotation: {x: 0.14863005, y: 0.003087044, z: -0.0004639833, w: 0.98888797}
   m_LocalPosition: {x: -0.13490969, y: 2.599119, z: -2.664896}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -646,7 +646,7 @@ GameObject:
   - component: {fileID: 1366359331}
   - component: {fileID: 1366359336}
   m_Layer: 3
-  m_Name: Cube
+  m_Name: wall_large
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1015,7 +1015,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1985392172}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.14863048, y: 0.0018914872, z: -0.00028428587, w: 0.988891}
+  m_LocalRotation: {x: 0.14863005, y: 0.003087044, z: -0.00046398325, w: 0.98888797}
   m_LocalPosition: {x: -0.13490969, y: 2.599119, z: -2.664896}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1068,7 +1068,7 @@ GameObject:
   - component: {fileID: 2080620114}
   - component: {fileID: 2080620118}
   m_Layer: 3
-  m_Name: Capsule
+  m_Name: npc_capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
