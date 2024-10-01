@@ -18,8 +18,8 @@ namespace RetroHorror
         [SerializeField] LayerMask pickupLayerMask;
 
         [Header("Setting")]
-        [SerializeField] float playerMaxMoveSpeed = 10f;
-        [SerializeField] float rotationSpeed = 15f;
+        [SerializeField] float maxPlayerMoveSpeed = 200f;
+        [SerializeField] float rotationSpeed = 500f;
         [SerializeField] float animatorSmoothTime = 0.2f;
         [SerializeField] float playerReach = 0.5f;
 
@@ -33,7 +33,7 @@ namespace RetroHorror
         //Player Movement Variables
         Vector3 playerMovement;
         float velocity;
-        float currentSpeed;
+        float currentPlayerMoveSpeed;
         float playerSpeedModifier;
 
         //Animation
@@ -48,25 +48,25 @@ namespace RetroHorror
             input.TestKeyPressed += OnTestKeyPressed;
             input.TestKeyReleased += OnTestKeyReleased;
 
-            input.ShiftPressed += OnShiftPressed;
-            input.ShiftReleased += OnShiftReleased;
+            input.StartSpeedChange += OnShiftPressed;
+            input.EndSpeedChange += OnShiftReleased;
 
             input.Interact += AttemptInteraction;
 
-           // input.ChangeSpeed += AdjustMovementSpeed;
+            input.ChangeSpeed += AdjustMovementSpeed;
 
         }
         void OnDisable() 
         {
-            input.TestKeyPressed -= OnShiftPressed;
+            input.TestKeyPressed -= OnTestKeyPressed;
             input.TestKeyReleased -= OnTestKeyReleased;
 
-            input.ShiftPressed -= OnShiftPressed;
-            input.ShiftReleased -= OnShiftReleased;
+            input.StartSpeedChange -= OnShiftPressed;
+            input.EndSpeedChange -= OnShiftReleased;
 
             input.Interact -= AttemptInteraction;
 
-            //input.ChangeSpeed -= AdjustMovementSpeed;
+            input.ChangeSpeed -= AdjustMovementSpeed;
 
         }
         void Awake()
@@ -74,8 +74,8 @@ namespace RetroHorror
             playerHeight = capsuleCollider.height;
             playerRadius = capsuleCollider.radius;
 
-            currentSpeed = playerMaxMoveSpeed * .5f;
-            playerSpeedModifier = playerMaxMoveSpeed * .1f;
+            currentPlayerMoveSpeed = maxPlayerMoveSpeed * .5f;
+            playerSpeedModifier = maxPlayerMoveSpeed * .1f;
 
             mainCam = Camera.main.transform;
 
@@ -116,7 +116,6 @@ namespace RetroHorror
 
         void FixedUpdate()
         {
-            HandleMovement();
             stateMachine.FixedUpdate();
         }
 
@@ -160,7 +159,7 @@ namespace RetroHorror
 
         void HandleHorizontalMovement(Vector3 movementDirection)
         {
-            Vector3 velocity = movementDirection * playerMaxMoveSpeed * Time.fixedDeltaTime;
+            Vector3 velocity = movementDirection * currentPlayerMoveSpeed * Time.fixedDeltaTime;
             rb.velocity = new Vector3(velocity.x, rb.velocity.y, velocity.z);
         }
 
@@ -212,29 +211,25 @@ namespace RetroHorror
         void OnShiftReleased() => isShiftHeld = false;
         bool IsShiftHeld()
         {
-
             return isShiftHeld;
         }
         void AdjustMovementSpeed(Vector2 value)
         {
-            // if(!IsShiftHeld()) return;
+            if(!IsShiftHeld()) return;
 
-            // float scrollSpeed = input.GetScrollValue;
-            // print(scrollSpeed);
-            // print(value);
+            float scrollSpeed = input.GetScrollValue;
+            print(scrollSpeed);
 
-            // if(scrollSpeed > 0)
-            // {
-            //     currentSpeed += playerSpeedModifier;
-            // }
-            // if(scrollSpeed < 0)
-            // {
-            //     currentSpeed += playerSpeedModifier;
-            // }
-                //add 10%
-            //if scroll = -120
-                //subtract 10%
-            //if 0 return
+            if(scrollSpeed > 0 && currentPlayerMoveSpeed < maxPlayerMoveSpeed)
+            {
+                currentPlayerMoveSpeed += playerSpeedModifier;
+                if(currentPlayerMoveSpeed > maxPlayerMoveSpeed) currentPlayerMoveSpeed = maxPlayerMoveSpeed;
+            }
+            if(scrollSpeed < 0 && currentPlayerMoveSpeed > 0)
+            {
+                currentPlayerMoveSpeed -= playerSpeedModifier;
+                if(currentPlayerMoveSpeed < 0) currentPlayerMoveSpeed = 0;
+            }
         }
     }
 }

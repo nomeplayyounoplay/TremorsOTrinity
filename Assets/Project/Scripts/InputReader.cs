@@ -13,8 +13,8 @@ namespace RetroHorror
         public event UnityAction<Vector2> Move = delegate {};
         public event UnityAction Interact = delegate {};
         public event UnityAction<Vector2> ChangeSpeed = delegate {};
-        public event UnityAction ShiftPressed = delegate {};
-        public event UnityAction ShiftReleased = delegate {};
+        public event UnityAction StartSpeedChange = delegate {};
+        public event UnityAction EndSpeedChange = delegate {};
         public event UnityAction TestKeyPressed = delegate {};
         public event UnityAction TestKeyReleased = delegate {};
         PlayerInputActions inputActions;
@@ -71,10 +71,10 @@ namespace RetroHorror
             switch(context.phase)
             {
                 case InputActionPhase.Performed:
-                    ShiftPressed?.Invoke();
+                    StartSpeedChange?.Invoke();
                     break;
                 case InputActionPhase.Canceled:
-                    ShiftReleased?.Invoke();
+                    EndSpeedChange?.Invoke();
                     break;
             }
         }

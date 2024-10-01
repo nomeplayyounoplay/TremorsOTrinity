@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638632501039215919
-    m_Hash: 4201194969
+      ticks: 638633422083901909
+    m_Hash: 1435146393
   m_LockFileStatus:
     m_FilePath: C:/GameDev/Unity/TrinityRiverValley/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 638632501039249744
-    m_Hash: 1419674519
+      ticks: 638633422083901909
+    m_Hash: 128874332
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_LocalPackages:
@@ -568,6 +568,7 @@ m_ResolvedPackages:
     - 1.9.0
     - 1.10.0
     - 1.11.0
+    - 1.11.1
     compatible:
     - 1.7.0
     - 1.8.0-pre.1
@@ -578,6 +579,7 @@ m_ResolvedPackages:
     - 1.9.0
     - 1.10.0
     - 1.11.0
+    - 1.11.1
     recommended: 1.7.0
     deprecated: []
   dependencies:

@@ -1230,6 +1230,10 @@ PrefabInstance:
       propertyPath: freelookCam
       value: 
       objectReference: {fileID: 1985392173}
+    - target: {fileID: 8115533525056954135, guid: 68fd88e88f8282845ba7af21603fbbcc, type: 3}
+      propertyPath: maxMoveSpeed
+      value: 200
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
