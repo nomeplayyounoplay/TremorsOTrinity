@@ -18,7 +18,7 @@ namespace RetroHorror
         [SerializeField] LayerMask pickupLayerMask;
 
         [Header("Setting")]
-        [SerializeField] float moveSpeed = 6f;
+        [SerializeField] float playerMaxMoveSpeed = 10f;
         [SerializeField] float rotationSpeed = 15f;
         [SerializeField] float animatorSmoothTime = 0.2f;
         [SerializeField] float playerReach = 0.5f;
@@ -33,13 +33,14 @@ namespace RetroHorror
         //Player Movement Variables
         Vector3 playerMovement;
         float velocity;
+        float currentSpeed;
+        float playerSpeedModifier;
 
         //Animation
         static readonly int Speed = Animator.StringToHash("Speed");
-        float currentSpeed = 0.0f;
+        float animSpeed = 0.0f;
 
         public bool isTesting = false;
-
         bool isShiftHeld = false;
 
         void OnEnable()
@@ -52,6 +53,8 @@ namespace RetroHorror
 
             input.Interact += AttemptInteraction;
 
+           // input.ChangeSpeed += AdjustMovementSpeed;
+
         }
         void OnDisable() 
         {
@@ -62,11 +65,17 @@ namespace RetroHorror
             input.ShiftReleased -= OnShiftReleased;
 
             input.Interact -= AttemptInteraction;
+
+            //input.ChangeSpeed -= AdjustMovementSpeed;
+
         }
         void Awake()
         {
             playerHeight = capsuleCollider.height;
             playerRadius = capsuleCollider.radius;
+
+            currentSpeed = playerMaxMoveSpeed * .5f;
+            playerSpeedModifier = playerMaxMoveSpeed * .1f;
 
             mainCam = Camera.main.transform;
 
@@ -101,16 +110,17 @@ namespace RetroHorror
         {
             playerMovement = new Vector3(input.Direction.x, 0f, input.Direction.y);
             stateMachine.Update();
-            AdjustMovementSpeed();
+            
             UpdateAnimator();
         }
 
         void FixedUpdate()
         {
+            HandleMovement();
             stateMachine.FixedUpdate();
         }
 
-        void UpdateAnimator() => animator.SetFloat(Speed, currentSpeed);
+        void UpdateAnimator() => animator.SetFloat(Speed, animSpeed);
 
         public void HandleMovement()
         {
@@ -119,20 +129,20 @@ namespace RetroHorror
             {
                 HandleRotation(movementDirection);
                 HandleHorizontalMovement(movementDirection);
-                currentSpeed = SmoothSpeed(movementDirection.magnitude);
+                animSpeed = SmoothSpeed(movementDirection.magnitude);
             }
             else
             {
                 rb.velocity = new Vector3(ZEROF, rb.velocity.y, ZEROF);
-                currentSpeed = SmoothSpeed(ZEROF);
+                animSpeed = SmoothSpeed(ZEROF);
             }
         }
 
         Vector3 CalculateMovementDirection()
         {
-            Vector3 camForward = (mainCam.forward).normalized;
+            Vector3 camForward = mainCam.forward.normalized;
             camForward.y = 0f;
-            Vector3 camRight = (mainCam.right).normalized;
+            Vector3 camRight = mainCam.right.normalized;
             camRight.y = 0f; 
             
             Vector3 movementDirection = playerMovement.z * camForward + 
@@ -150,11 +160,11 @@ namespace RetroHorror
 
         void HandleHorizontalMovement(Vector3 movementDirection)
         {
-            Vector3 velocity = movementDirection * (moveSpeed * Time.fixedDeltaTime);
+            Vector3 velocity = movementDirection * playerMaxMoveSpeed * Time.fixedDeltaTime;
             rb.velocity = new Vector3(velocity.x, rb.velocity.y, velocity.z);
         }
 
-        float SmoothSpeed(float value) => Mathf.SmoothDamp(currentSpeed, value, ref velocity, animatorSmoothTime);
+        float SmoothSpeed(float value) => Mathf.SmoothDamp(animSpeed, value, ref velocity, animatorSmoothTime);
 
         //Tester - When pressed&held will change states and remain in state until release
         //Use this style for Sneaking
@@ -193,20 +203,38 @@ namespace RetroHorror
             } 
         }
 
-        void AdjustMovementSpeed()
-        {
-            if(!IsShiftHeld()) return;
 
-            float scrollSpeed = input.GetScrollValue;
-            print(scrollSpeed);
-        }
-        
+        //Functions for adjusting speed
+        //Hold Shift - then can adjust 
+        //Change name - using Shift is bad idea
+        //Something about Ready to Adjust Speed idk or can or prepared or or orororrororoo
         void OnShiftPressed() => isShiftHeld = true;
         void OnShiftReleased() => isShiftHeld = false;
         bool IsShiftHeld()
         {
+
             return isShiftHeld;
         }
+        void AdjustMovementSpeed(Vector2 value)
+        {
+            // if(!IsShiftHeld()) return;
 
+            // float scrollSpeed = input.GetScrollValue;
+            // print(scrollSpeed);
+            // print(value);
+
+            // if(scrollSpeed > 0)
+            // {
+            //     currentSpeed += playerSpeedModifier;
+            // }
+            // if(scrollSpeed < 0)
+            // {
+            //     currentSpeed += playerSpeedModifier;
+            // }
+                //add 10%
+            //if scroll = -120
+                //subtract 10%
+            //if 0 return
+        }
     }
 }

@@ -59,8 +59,13 @@ namespace RetroHorror
             }
         }
 
-        public void OnChangeSpeed(InputAction.CallbackContext context) => ChangeSpeed?.Invoke(context.ReadValue<Vector2>());
-
+        public void OnChangeSpeed(InputAction.CallbackContext context)
+        {
+            if(context.performed)
+            {
+                ChangeSpeed?.Invoke(context.ReadValue<Vector2>());
+            }
+        }
         public void OnStartSpeedChange(InputAction.CallbackContext context)
         {
             switch(context.phase)
