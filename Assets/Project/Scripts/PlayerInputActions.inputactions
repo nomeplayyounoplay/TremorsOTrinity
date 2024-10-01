@@ -9,7 +9,7 @@
                     "name": "Move",
                     "type": "Value",
                     "id": "18bfa640-241a-4725-a68e-15a1b5374914",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Integer",
                     "processors": "",
                     "interactions": "Press",
                     "initialStateCheck": true
@@ -27,6 +27,24 @@
                     "name": "Interact",
                     "type": "Button",
                     "id": "33c8024f-0a4d-44fd-826b-d2c3701a7209",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "ChangeSpeed",
+                    "type": "Value",
+                    "id": "01078204-0090-428d-bb27-779dcab7b4c3",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "StartSpeedChange",
+                    "type": "Button",
+                    "id": "3b7f8d44-bf47-433f-aca1-06573f7647ee",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -163,6 +181,28 @@
                     "processors": "",
                     "groups": "Mouse & Keys",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3a5eb7da-3650-4419-bbd9-bfad6400b04c",
+                    "path": "<Mouse>/scroll",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse & Keys",
+                    "action": "ChangeSpeed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4cca42ab-39b3-4fd7-87e1-879f0173736a",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse & Keys",
+                    "action": "StartSpeedChange",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

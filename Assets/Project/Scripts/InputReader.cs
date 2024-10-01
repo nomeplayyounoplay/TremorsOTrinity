@@ -12,6 +12,9 @@ namespace RetroHorror
     {
         public event UnityAction<Vector2> Move = delegate {};
         public event UnityAction Interact = delegate {};
+        public event UnityAction<Vector2> ChangeSpeed = delegate {};
+        public event UnityAction StartSpeedChange = delegate {};
+        public event UnityAction EndSpeedChange = delegate {};
         public event UnityAction TestKeyPressed = delegate {};
         public event UnityAction TestKeyReleased = delegate {};
         PlayerInputActions inputActions;
@@ -20,6 +23,7 @@ namespace RetroHorror
         //Direction reads the latest value stored by OnMove and returns it to us as a Vec3 with Z=0
         //Convenient way to get current direction as vec3
         public Vector3 Direction => (Vector3)inputActions.Player.Move.ReadValue<Vector2>();
+        public float GetScrollValue => inputActions.Player.ChangeSpeed.ReadValue<Vector2>().y;
         
         void OnEnable()
         {
@@ -52,6 +56,26 @@ namespace RetroHorror
             if(context.performed)
             {
                 Interact?.Invoke();
+            }
+        }
+
+        public void OnChangeSpeed(InputAction.CallbackContext context)
+        {
+            if(context.performed)
+            {
+                ChangeSpeed?.Invoke(context.ReadValue<Vector2>());
+            }
+        }
+        public void OnStartSpeedChange(InputAction.CallbackContext context)
+        {
+            switch(context.phase)
+            {
+                case InputActionPhase.Performed:
+                    StartSpeedChange?.Invoke();
+                    break;
+                case InputActionPhase.Canceled:
+                    EndSpeedChange?.Invoke();
+                    break;
             }
         }
     }

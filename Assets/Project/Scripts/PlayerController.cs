@@ -1,6 +1,7 @@
 using Unity.Cinemachine;
 using KBCore.Refs;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace RetroHorror
 {
@@ -17,8 +18,8 @@ namespace RetroHorror
         [SerializeField] LayerMask pickupLayerMask;
 
         [Header("Setting")]
-        [SerializeField] float moveSpeed = 6f;
-        [SerializeField] float rotationSpeed = 15f;
+        [SerializeField] float maxPlayerMoveSpeed = 200f;
+        [SerializeField] float rotationSpeed = 500f;
         [SerializeField] float animatorSmoothTime = 0.2f;
         [SerializeField] float playerReach = 0.5f;
 
@@ -32,33 +33,51 @@ namespace RetroHorror
         //Player Movement Variables
         Vector3 playerMovement;
         float velocity;
+        float currentPlayerMoveSpeed;
+        float playerSpeedModifier;
 
         //Animation
         static readonly int Speed = Animator.StringToHash("Speed");
-        float currentSpeed = 0.0f;
+        float animSpeed = 0.0f;
 
         public bool isTesting = false;
+        bool isShiftHeld = false;
 
         void OnEnable()
         {
             input.TestKeyPressed += OnTestKeyPressed;
             input.TestKeyReleased += OnTestKeyReleased;
 
+            input.StartSpeedChange += OnShiftPressed;
+            input.EndSpeedChange += OnShiftReleased;
+
             input.Interact += AttemptInteraction;
+
+            input.ChangeSpeed += AdjustMovementSpeed;
+
         }
         void OnDisable() 
         {
             input.TestKeyPressed -= OnTestKeyPressed;
             input.TestKeyReleased -= OnTestKeyReleased;
 
+            input.StartSpeedChange -= OnShiftPressed;
+            input.EndSpeedChange -= OnShiftReleased;
+
             input.Interact -= AttemptInteraction;
+
+            input.ChangeSpeed -= AdjustMovementSpeed;
+
         }
         void Awake()
         {
-            mainCam = Camera.main.transform;
-
             playerHeight = capsuleCollider.height;
             playerRadius = capsuleCollider.radius;
+
+            currentPlayerMoveSpeed = maxPlayerMoveSpeed * .5f;
+            playerSpeedModifier = maxPlayerMoveSpeed * .1f;
+
+            mainCam = Camera.main.transform;
 
             //Essentially if the Player teleports/moves away in a flash
             //Makes sure camera does not lose the player 
@@ -91,6 +110,7 @@ namespace RetroHorror
         {
             playerMovement = new Vector3(input.Direction.x, 0f, input.Direction.y);
             stateMachine.Update();
+            
             UpdateAnimator();
         }
 
@@ -99,7 +119,7 @@ namespace RetroHorror
             stateMachine.FixedUpdate();
         }
 
-        void UpdateAnimator() => animator.SetFloat(Speed, currentSpeed);
+        void UpdateAnimator() => animator.SetFloat(Speed, animSpeed);
 
         public void HandleMovement()
         {
@@ -108,20 +128,20 @@ namespace RetroHorror
             {
                 HandleRotation(movementDirection);
                 HandleHorizontalMovement(movementDirection);
-                currentSpeed = SmoothSpeed(movementDirection.magnitude);
+                animSpeed = SmoothSpeed(movementDirection.magnitude);
             }
             else
             {
                 rb.velocity = new Vector3(ZEROF, rb.velocity.y, ZEROF);
-                currentSpeed = SmoothSpeed(ZEROF);
+                animSpeed = SmoothSpeed(ZEROF);
             }
         }
 
         Vector3 CalculateMovementDirection()
         {
-            Vector3 camForward = (mainCam.forward).normalized;
+            Vector3 camForward = mainCam.forward.normalized;
             camForward.y = 0f;
-            Vector3 camRight = (mainCam.right).normalized;
+            Vector3 camRight = mainCam.right.normalized;
             camRight.y = 0f; 
             
             Vector3 movementDirection = playerMovement.z * camForward + 
@@ -139,26 +159,19 @@ namespace RetroHorror
 
         void HandleHorizontalMovement(Vector3 movementDirection)
         {
-            Vector3 velocity = movementDirection * (moveSpeed * Time.fixedDeltaTime);
+            Vector3 velocity = movementDirection * currentPlayerMoveSpeed * Time.fixedDeltaTime;
             rb.velocity = new Vector3(velocity.x, rb.velocity.y, velocity.z);
         }
 
-        float SmoothSpeed(float value) => Mathf.SmoothDamp(currentSpeed, value, ref velocity, animatorSmoothTime);
+        float SmoothSpeed(float value) => Mathf.SmoothDamp(animSpeed, value, ref velocity, animatorSmoothTime);
 
         //Tester - When pressed&held will change states and remain in state until release
         //Use this style for Sneaking
+        void OnTestKeyPressed() => isTesting = true;
+        void OnTestKeyReleased() => isTesting = false;
         bool IsTesting()
         {
             return isTesting;
-        }
-        void OnTestKeyPressed()
-        {
-            isTesting = true;
-            Debug.Log("GO TO TEST!!!");
-        }
-        void OnTestKeyReleased()
-        {
-            isTesting = false;
         }
 
         void AttemptInteraction()
@@ -187,6 +200,36 @@ namespace RetroHorror
             {
                 Debug.Log("Nothing to interact with");
             } 
+        }
+
+
+        //Functions for adjusting speed
+        //Hold Shift - then can adjust 
+        //Change name - using Shift is bad idea
+        //Something about Ready to Adjust Speed idk or can or prepared or or orororrororoo
+        void OnShiftPressed() => isShiftHeld = true;
+        void OnShiftReleased() => isShiftHeld = false;
+        bool IsShiftHeld()
+        {
+            return isShiftHeld;
+        }
+        void AdjustMovementSpeed(Vector2 value)
+        {
+            if(!IsShiftHeld()) return;
+
+            float scrollSpeed = input.GetScrollValue;
+            print(scrollSpeed);
+
+            if(scrollSpeed > 0 && currentPlayerMoveSpeed < maxPlayerMoveSpeed)
+            {
+                currentPlayerMoveSpeed += playerSpeedModifier;
+                if(currentPlayerMoveSpeed > maxPlayerMoveSpeed) currentPlayerMoveSpeed = maxPlayerMoveSpeed;
+            }
+            if(scrollSpeed < 0 && currentPlayerMoveSpeed > 0)
+            {
+                currentPlayerMoveSpeed -= playerSpeedModifier;
+                if(currentPlayerMoveSpeed < 0) currentPlayerMoveSpeed = 0;
+            }
         }
     }
 }
