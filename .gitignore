@@ -1,3 +1,87 @@
-Temp/
-*.log
+# Unity generated folders
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+[Ss]napshots/
+
+# Unity crash reports
+CrashReport/
+
+# Auto-generated files
 *.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+
+# Unity-specific settings and metadata
+*.pidb.meta
+*.pdb.meta
+*.mdb
+*.mdb.meta
+*.ilk
+*.ilk.meta
+*.ipch/
+*.iobj/
+*.aps/
+*.ncb
+*.opendb
+*.VC.db
+
+# Build folders and artifacts
+*.stackdump
+*.coredump
+*.app
+*.exe
+*.apk
+*.xcodeproj
+*.xcworkspace
+*.xcuserstate
+*.DS_Store
+*.directory
+
+# Unity script debug symbols and assembly files
+*.dll
+*.dll.meta
+*.so
+*.so.meta
+*.dylib
+*.dylib.meta
+
+# Unity Asset Store tools
+Assets/AssetStoreTools*
+
+# Visual Studio Code settings
+.vscode/
+
+# Rider IDE files
+.idea/
+*.sln.iml
+*.sln.DotSettings
+
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows system files
+Thumbs.db
+Desktop.ini
+
+# Temporary or generated files by Unity
+# (you can choose to keep Asset Bundles if you're tracking them separately)
+AssetBundles/
+
+# Ignore other configurations or personal settings
+*.swp
+*~.nib
