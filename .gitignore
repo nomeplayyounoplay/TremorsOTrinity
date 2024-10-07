@@ -25,7 +25,7 @@ CrashReport/
 *.pdb
 
 # Unity-specific settings and metadata
-*.pidb.meta
+*.pidb.metaS
 *.pdb.meta
 *.mdb
 *.mdb.meta
