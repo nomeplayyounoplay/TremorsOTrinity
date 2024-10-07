@@ -369,7 +369,9 @@ MonoBehaviour:
   pickupLayerMask:
     serializedVersion: 2
     m_Bits: 8
-  moveSpeed: 200
+  maxPlayerMoveSpeed: 400
+  minPlayerWalkSpeed: 40
+  playerSpeedModifier: 20
   rotationSpeed: 500
   animatorSmoothTime: 0.2
   playerReach: 0.5

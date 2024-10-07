@@ -379,6 +379,7 @@
 "Assets/Project/Scripts/StateMachine/States/LocomotionState.cs"
 "Assets/Project/Scripts/StateMachine/States/PlayerBaseState.cs"
 "Assets/Project/Scripts/StateMachine/States/PlayerTestState.cs"
+"Assets/Project/Scripts/StateMachine/States/StealthState.cs"
 "Assets/Project/Scripts/StateMachine/Transitions/ITransition.cs"
 "Assets/Project/Scripts/StateMachine/Transitions/Transition.cs"
 "Assets/Project/Scripts/WorldItem.cs"

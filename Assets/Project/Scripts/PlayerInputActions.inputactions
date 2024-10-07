@@ -49,6 +49,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ToggleStealth",
+                    "type": "Button",
+                    "id": "a6786c77-fdb9-4328-b4a0-b9484eecdfe9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -203,6 +212,17 @@
                     "processors": "",
                     "groups": "Mouse & Keys",
                     "action": "StartSpeedChange",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a6732235-fd06-45f5-8dad-504abaef4b85",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse & Keys",
+                    "action": "ToggleStealth",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

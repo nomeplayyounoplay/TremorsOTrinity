@@ -2,6 +2,7 @@ using Unity.Cinemachine;
 using KBCore.Refs;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Unity.Mathematics;
 
 namespace RetroHorror
 {
@@ -18,11 +19,12 @@ namespace RetroHorror
         [SerializeField] LayerMask pickupLayerMask;
 
         [Header("Setting")]
-        [SerializeField] float maxPlayerMoveSpeed = 200f;
+        [SerializeField] float InitialMaxPlayerMoveSpeed = 400f;
+        [SerializeField] float minPlayerMoveSpeed = 40f;
+        [SerializeField] float playerSpeedModifier = 20f;
         [SerializeField] float rotationSpeed = 500f;
         [SerializeField] float animatorSmoothTime = 0.2f;
         [SerializeField] float playerReach = 0.5f;
-
 
         StateMachine stateMachine;
         Transform mainCam;
@@ -33,15 +35,18 @@ namespace RetroHorror
         //Player Movement Variables
         Vector3 playerMovement;
         float velocity;
-        float currentPlayerMoveSpeed;
-        float playerSpeedModifier;
+        float currentPlayerSpeedModifier;
+        float maxPlayerMoveSpeed;
 
         //Animation
         static readonly int Speed = Animator.StringToHash("Speed");
+        static readonly int Stealthed = Animator.StringToHash("Stealthed");
         float animSpeed = 0.0f;
 
         public bool isTesting = false;
         bool isShiftHeld = false;
+
+        bool isStealthed = false;
 
         void OnEnable()
         {
@@ -50,11 +55,11 @@ namespace RetroHorror
 
             input.StartSpeedChange += OnShiftPressed;
             input.EndSpeedChange += OnShiftReleased;
-
-            input.Interact += AttemptInteraction;
-
             input.ChangeSpeed += AdjustMovementSpeed;
 
+            input.ToggleStealth += ToggleStealthMode;
+
+            input.Interact += AttemptInteraction;
         }
         void OnDisable() 
         {
@@ -67,15 +72,14 @@ namespace RetroHorror
             input.Interact -= AttemptInteraction;
 
             input.ChangeSpeed -= AdjustMovementSpeed;
-
         }
         void Awake()
         {
             playerHeight = capsuleCollider.height;
             playerRadius = capsuleCollider.radius;
 
-            currentPlayerMoveSpeed = maxPlayerMoveSpeed * .5f;
-            playerSpeedModifier = maxPlayerMoveSpeed * .1f;
+            currentPlayerSpeedModifier = InitialMaxPlayerMoveSpeed * .5f;
+            maxPlayerMoveSpeed = InitialMaxPlayerMoveSpeed;
 
             mainCam = Camera.main.transform;
 
@@ -93,10 +97,14 @@ namespace RetroHorror
             //Declare States
             var playerTestState = new PlayerTestState(this, animator);
             var locomotionState = new LocomotionState(this, animator);
+            var stealthState = new StealthState(this, animator);
 
             //Define Transitions
             At(locomotionState, playerTestState, new FuncPredicate(() => IsTesting()));
             At(playerTestState, locomotionState, new FuncPredicate(() => !IsTesting()));
+            At(locomotionState, stealthState, new FuncPredicate(() => IsStealthed()));
+            At(stealthState, locomotionState, new FuncPredicate(() => !IsStealthed()));
+
 
             //Set Initial State
             stateMachine.SetState(locomotionState);
@@ -110,17 +118,21 @@ namespace RetroHorror
         {
             playerMovement = new Vector3(input.Direction.x, 0f, input.Direction.y);
             stateMachine.Update();
-            
-            UpdateAnimator();
+
+            Debug.Log(maxPlayerMoveSpeed);
         }
 
         void FixedUpdate()
         {
             stateMachine.FixedUpdate();
+            UpdateAnimator();
         }
 
-        void UpdateAnimator() => animator.SetFloat(Speed, animSpeed);
-
+        void UpdateAnimator()
+        {
+            animator.SetBool(Stealthed, isStealthed);
+            animator.SetFloat(Speed, animSpeed);
+        }
         public void HandleMovement()
         {
             Vector3 movementDirection = CalculateMovementDirection();
@@ -128,7 +140,10 @@ namespace RetroHorror
             {
                 HandleRotation(movementDirection);
                 HandleHorizontalMovement(movementDirection);
-                animSpeed = SmoothSpeed(movementDirection.magnitude);
+
+                //properly scales animSpeed to fit into speed modification - walk to run animation blend
+                float normalizedSpeed = (movementDirection.magnitude * currentPlayerSpeedModifier) / maxPlayerMoveSpeed;
+                animSpeed = SmoothSpeed(normalizedSpeed);
             }
             else
             {
@@ -159,12 +174,14 @@ namespace RetroHorror
 
         void HandleHorizontalMovement(Vector3 movementDirection)
         {
-            Vector3 velocity = movementDirection * currentPlayerMoveSpeed * Time.fixedDeltaTime;
+            Vector3 velocity = movementDirection * currentPlayerSpeedModifier * Time.fixedDeltaTime;
             rb.velocity = new Vector3(velocity.x, rb.velocity.y, velocity.z);
         }
 
-        float SmoothSpeed(float value) => Mathf.SmoothDamp(animSpeed, value, ref velocity, animatorSmoothTime);
-
+        float SmoothSpeed(float value)
+        {
+            return Mathf.SmoothDamp(animSpeed, value, ref velocity, animatorSmoothTime);
+        }
         //Tester - When pressed&held will change states and remain in state until release
         //Use this style for Sneaking
         void OnTestKeyPressed() => isTesting = true;
@@ -218,18 +235,35 @@ namespace RetroHorror
             if(!IsShiftHeld()) return;
 
             float scrollSpeed = input.GetScrollValue;
-            print(scrollSpeed);
 
-            if(scrollSpeed > 0 && currentPlayerMoveSpeed < maxPlayerMoveSpeed)
+            if(scrollSpeed > 0 && currentPlayerSpeedModifier < maxPlayerMoveSpeed)
             {
-                currentPlayerMoveSpeed += playerSpeedModifier;
-                if(currentPlayerMoveSpeed > maxPlayerMoveSpeed) currentPlayerMoveSpeed = maxPlayerMoveSpeed;
+                currentPlayerSpeedModifier += playerSpeedModifier;
+                if(currentPlayerSpeedModifier > maxPlayerMoveSpeed) currentPlayerSpeedModifier = maxPlayerMoveSpeed;
             }
-            if(scrollSpeed < 0 && currentPlayerMoveSpeed > 0)
+            if(scrollSpeed < 0 && currentPlayerSpeedModifier > minPlayerMoveSpeed)
             {
-                currentPlayerMoveSpeed -= playerSpeedModifier;
-                if(currentPlayerMoveSpeed < 0) currentPlayerMoveSpeed = 0;
+                currentPlayerSpeedModifier -= playerSpeedModifier;
+                if(currentPlayerSpeedModifier < minPlayerMoveSpeed) currentPlayerSpeedModifier = minPlayerMoveSpeed;
             }
+        }
+
+        void ToggleStealthMode() => isStealthed = !isStealthed;
+        
+        bool IsStealthed()
+        {
+            return isStealthed;
+        }
+
+        public void SetMaxMoveSpeed(float value) => maxPlayerMoveSpeed = value;
+        
+        public float GetInitialMaxMoveSpeed()
+        {
+            return InitialMaxPlayerMoveSpeed;
+        }
+        public float GetMaxMoveSpeed()
+        {
+            return maxPlayerMoveSpeed;
         }
     }
 }

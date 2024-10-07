@@ -71,6 +71,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ToggleStealth"",
+                    ""type"": ""Button"",
+                    ""id"": ""a6786c77-fdb9-4328-b4a0-b9484eecdfe9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -227,6 +236,17 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""StartSpeedChange"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a6732235-fd06-45f5-8dad-504abaef4b85"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse & Keys"",
+                    ""action"": ""ToggleStealth"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -268,6 +288,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_ChangeSpeed = m_Player.FindAction("ChangeSpeed", throwIfNotFound: true);
         m_Player_StartSpeedChange = m_Player.FindAction("StartSpeedChange", throwIfNotFound: true);
+        m_Player_ToggleStealth = m_Player.FindAction("ToggleStealth", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -334,6 +355,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_ChangeSpeed;
     private readonly InputAction m_Player_StartSpeedChange;
+    private readonly InputAction m_Player_ToggleStealth;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -343,6 +365,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @ChangeSpeed => m_Wrapper.m_Player_ChangeSpeed;
         public InputAction @StartSpeedChange => m_Wrapper.m_Player_StartSpeedChange;
+        public InputAction @ToggleStealth => m_Wrapper.m_Player_ToggleStealth;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -367,6 +390,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @StartSpeedChange.started += instance.OnStartSpeedChange;
             @StartSpeedChange.performed += instance.OnStartSpeedChange;
             @StartSpeedChange.canceled += instance.OnStartSpeedChange;
+            @ToggleStealth.started += instance.OnToggleStealth;
+            @ToggleStealth.performed += instance.OnToggleStealth;
+            @ToggleStealth.canceled += instance.OnToggleStealth;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -386,6 +412,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @StartSpeedChange.started -= instance.OnStartSpeedChange;
             @StartSpeedChange.performed -= instance.OnStartSpeedChange;
             @StartSpeedChange.canceled -= instance.OnStartSpeedChange;
+            @ToggleStealth.started -= instance.OnToggleStealth;
+            @ToggleStealth.performed -= instance.OnToggleStealth;
+            @ToggleStealth.canceled -= instance.OnToggleStealth;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -428,5 +457,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnChangeSpeed(InputAction.CallbackContext context);
         void OnStartSpeedChange(InputAction.CallbackContext context);
+        void OnToggleStealth(InputAction.CallbackContext context);
     }
 }

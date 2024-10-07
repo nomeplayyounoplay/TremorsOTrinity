@@ -17,6 +17,8 @@ namespace RetroHorror
         public event UnityAction EndSpeedChange = delegate {};
         public event UnityAction TestKeyPressed = delegate {};
         public event UnityAction TestKeyReleased = delegate {};
+        
+        public event UnityAction ToggleStealth = delegate {};
         PlayerInputActions inputActions;
 
         //Below the OnMove function stores the value 
@@ -76,6 +78,14 @@ namespace RetroHorror
                 case InputActionPhase.Canceled:
                     EndSpeedChange?.Invoke();
                     break;
+            }
+        }
+
+        public void OnToggleStealth(InputAction.CallbackContext context)
+        {
+            if(context.performed)
+            {
+                ToggleStealth?.Invoke();
             }
         }
     }

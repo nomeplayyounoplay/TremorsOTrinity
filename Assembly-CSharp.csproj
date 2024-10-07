@@ -107,6 +107,7 @@
     <Compile Include="Assets\Project\Scripts\Interactables\Interactable.cs" />
     <Compile Include="Assets\Project\Scripts\StateMachine\States\IState.cs" />
     <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\SpawnInRadius.cs" />
+    <Compile Include="Assets\Project\Scripts\StateMachine\States\StealthState.cs" />
     <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\ExpandingAimReticle.cs" />
     <Compile Include="Assets\Samples\Cinemachine\3.1.0\Shared Assets\Scripts\MagnetGroupController.cs" />
     <Compile Include="Assets\Samples\Cinemachine\3.1.0\3D Samples\Custom Blends\BlendStyleManager.cs" />
